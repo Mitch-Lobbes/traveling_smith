@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://blcikm87pqtbj"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_g3rve"]
+[ext_resource type="Texture2D" uid="uid://dkl7qxq2skq6w" path="res://Assets/sword.png" id="1_yrwj7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s8b20"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_g3rve")
+
+[node name="Anvil" type="MeshInstance2D" parent="."]
+position = Vector2(579, 328)
+rotation = 1.5708
+scale = Vector2(248.586, 303.674)
+mesh = SubResource("CapsuleMesh_s8b20")
+
+[node name="Sword" type="Sprite2D" parent="."]
+position = Vector2(515, 257)
+rotation = -2.30383
+scale = Vector2(0.62382, 0.64153)
+texture = ExtResource("1_yrwj7")
+
+[node name="SmithInputLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="SmithInputLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="SmithInputLayer/Control"]
+visible = false
+layout_mode = 0
+offset_left = 456.0
+offset_top = 236.0
+offset_right = 906.0
+offset_bottom = 324.0
+rotation = -1.5708
+value = 100.0
+
+[node name="Button" type="Button" parent="SmithInputLayer/Control"]
+layout_mode = 0
+offset_left = -171.0
+offset_top = -12.0
+offset_right = -101.0
+offset_bottom = 52.0
+toggle_mode = true
+
+[connection signal="toggled" from="SmithInputLayer/Control/Button" to="." method="_on_button_toggled"]

@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://blcikm87pqtbj"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_g3rve"]
+[ext_resource type="Texture2D" uid="uid://dkl7qxq2skq6w" path="res://Assets/sword.png" id="1_yrwj7"]
+[ext_resource type="PackedScene" uid="uid://bvhpl5148fwhq" path="res://Scenes/Hitpoint.tscn" id="3_mqqyp"]
+[ext_resource type="Script" path="res://Scripts/HitpointControl.gd" id="3_ytkku"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s8b20"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_g3rve")
+speed = 20
+
+[node name="Anvil" type="MeshInstance2D" parent="."]
+position = Vector2(579, 328)
+rotation = 1.5708
+scale = Vector2(248.586, 303.674)
+mesh = SubResource("CapsuleMesh_s8b20")
+
+[node name="Sword" type="Sprite2D" parent="."]
+position = Vector2(515, 257)
+rotation = -2.30383
+scale = Vector2(0.62382, 0.64153)
+texture = ExtResource("1_yrwj7")
+
+[node name="SmithInputLayer" type="CanvasLayer" parent="."]
+
+[node name="HitpointControl" type="Control" parent="SmithInputLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ytkku")
+
+[node name="ProgressBar" type="ProgressBar" parent="SmithInputLayer/HitpointControl"]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 241.0
+offset_right = 899.0
+offset_bottom = 329.0
+rotation = -1.5708
+value = 100.0
+
+[node name="Hitpoint1" parent="SmithInputLayer/HitpointControl" instance=ExtResource("3_mqqyp")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1.0
+offset_top = -14.0
+offset_right = 71.0
+offset_bottom = 50.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Hitpoint2" parent="SmithInputLayer/HitpointControl" instance=ExtResource("3_mqqyp")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -103.0
+offset_top = -14.0
+offset_right = -33.0
+offset_bottom = 50.0
+grow_horizontal = 1
+grow_vertical = 1
+id_public = 1
+
+[node name="QualityScore" type="HBoxContainer" parent="SmithInputLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -184.0
+offset_right = 65.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SmithInputLayer/QualityScore"]
+layout_mode = 2
+text = "Quality Score ="
+
+[node name="Amount" type="Label" parent="SmithInputLayer/QualityScore"]
+layout_mode = 2
+text = "0
+"
